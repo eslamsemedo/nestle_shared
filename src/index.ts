@@ -12,3 +12,4 @@ export * from './types/common.js';
 export * from './types/branches.js';
 export * from './types/alerts.js';
 export * from './types/treasury.js';
+export * from './types/my-day.js';
