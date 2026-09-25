@@ -14,3 +14,4 @@ export * from './types/alerts.js';
 export * from './types/treasury.js';
 export * from './types/my-day.js';
 export * from './types/stock.js';
+export * from './types/sales.js';
