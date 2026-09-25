@@ -1,7 +1,15 @@
 import type { Money } from './common.js';
 
 /** Trip statuses written by the backend services (`DailySalesmanSession.status`). */
-export type TripStatus = 'preparing' | 'on_route' | 'returned' | 'stock_closed' | 'closed' | 'cancelled';
+export type TripStatus =
+  | 'preparing'
+  | 'stock_issued'
+  | 'stock_received'
+  | 'on_route'
+  | 'returned'
+  | 'stock_closed'
+  | 'closed'
+  | 'cancelled';
 
 /** `MobileDayService::presentTrip` */
 export interface MyDayTrip {

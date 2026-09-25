@@ -10,3 +10,14 @@ export interface ItemResponse<T> {
   success: true;
   data: T;
 }
+
+/** Lists that answer `{ data: [...] }` without `success` (e.g. `/api/my/salesman-stock-requests`). */
+export interface BareListResponse<T> {
+  data: T[];
+}
+
+/** Writes that answer `{ message, data }` without `success` (e.g. stock requests, start-route). */
+export interface MessageResponse<T> {
+  message: string;
+  data: T;
+}
