@@ -22,3 +22,4 @@ export * from './types/closings.js';
 export * from './types/sync.js';
 export * from './types/field.js';
 export * from './types/warehouse.js';
+export * from './types/security.js';
