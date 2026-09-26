@@ -23,3 +23,4 @@ export * from './types/sync.js';
 export * from './types/field.js';
 export * from './types/warehouse.js';
 export * from './types/security.js';
+export * from './types/inventory.js';
