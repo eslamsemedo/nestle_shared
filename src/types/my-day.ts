@@ -6,8 +6,10 @@ export type TripStatus =
   | 'stock_issued'
   | 'stock_received'
   | 'on_route'
+  | 'closing_submitted'
   | 'returned'
   | 'stock_closed'
+  | 'cash_closing_submitted'
   | 'closed'
   | 'cancelled';
 

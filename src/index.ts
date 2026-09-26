@@ -18,3 +18,4 @@ export * from './types/sales.js';
 export * from './types/credit.js';
 export * from './types/returns.js';
 export * from './types/attachments.js';
+export * from './types/closings.js';
