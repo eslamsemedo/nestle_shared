@@ -21,3 +21,4 @@ export * from './types/attachments.js';
 export * from './types/closings.js';
 export * from './types/sync.js';
 export * from './types/field.js';
+export * from './types/warehouse.js';
