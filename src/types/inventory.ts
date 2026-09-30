@@ -98,6 +98,6 @@ export interface VanCount {
     system_quantity_cartons: number;
     actual_quantity_cartons: number;
     difference_quantity_cartons: number;
-    difference_type: 'BALANCED' | 'SHORT' | 'OVER' | string;
+    difference_type: 'BALANCED' | 'SHORTAGE' | 'EXCESS' | string;
   }[];
 }
