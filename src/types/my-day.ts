@@ -13,6 +13,21 @@ export type TripStatus =
   | 'closed'
   | 'cancelled';
 
+/** `MobileDayService::openVisit` — the salesman's started, not completed visit on this trip. */
+export interface MyDayOpenVisit {
+  id: number;
+  customer_id: number;
+  customer: string | null;
+  customer_code: string | null;
+  started_at: string | null;
+}
+
+/** The trip's stock / cash closing as `my/day` reports it (G1/G2). */
+export interface MyDayClosingRef {
+  id: number;
+  status: string;
+}
+
 /** `MobileDayService::presentTrip` */
 export interface MyDayTrip {
   id: number;
@@ -26,6 +41,9 @@ export interface MyDayTrip {
   driver: string | null;
   started_at: string | null;
   route_started_at: string | null;
+  open_visit: MyDayOpenVisit | null;
+  stock_closing: MyDayClosingRef | null;
+  cash_closing: MyDayClosingRef | null;
 }
 
 /** Credit is read from the parent account when the customer is a branch of another. */
