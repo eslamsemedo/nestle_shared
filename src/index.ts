@@ -25,3 +25,4 @@ export * from './types/warehouse.js';
 export * from './types/security.js';
 export * from './types/inventory.js';
 export * from './types/maintenance.js';
+export * from './types/storekeeper.js';
