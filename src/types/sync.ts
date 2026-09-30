@@ -23,6 +23,8 @@ export interface SyncResult {
   field?: string | null;
   /** One message in the request locale (the client sends `Accept-Language: ar`); there is no `message_ar` here. */
   message?: string;
+  /** `GEN_001` only (T3): field → messages, the same rules as the online endpoint. */
+  errors?: Record<string, string[]>;
 }
 
 export interface SyncPushResponse {
