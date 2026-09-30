@@ -46,3 +46,58 @@ export interface RecordFridgeItemResponse {
   success: true;
   data: { refrigerator_id: number; verdict: string };
 }
+
+/** `GET /api/vehicle-inventory-counts/pending` row: a returned van waiting for the inventory controller. */
+export interface PendingVanCount {
+  daily_session_id: number;
+  session_no: string;
+  business_date: string;
+  status: string;
+  salesman: string | null;
+  vehicle: string | null;
+  plate_number: string | null;
+  route: string | null;
+  returned_at: string | null;
+}
+
+export interface PendingVanCountsResponse {
+  success: true;
+  data: PendingVanCount[];
+}
+
+export interface VanCountSheetLine {
+  product_id: number;
+  product: { id: number; code: string; name: string };
+  system_quantity_cartons: number;
+}
+
+/** `GET /api/daily-sessions/{id}/count-sheet`. */
+export interface VanCountSheetResponse {
+  success: true;
+  trip: { id: number; session_no: string; business_date: string; status: string; vehicle_id: number };
+  data: VanCountSheetLine[];
+}
+
+export interface CreateVanCountBody {
+  daily_session_id: number;
+  items: { product_id: number; actual_quantity_cartons: number }[];
+  notes?: string;
+}
+
+/** `POST /api/vehicle-inventory-counts` response `data`. */
+export interface VanCount {
+  id: number;
+  status: string;
+  counted_at: string;
+  daily_session_id: number;
+  salesman: { id: number; name: string } | null;
+  summary: { lines_counted: number; lines_short: number; lines_over: number; cartons_short: number; cartons_over: number };
+  items: {
+    product_id: number;
+    product: { id: number; code: string; name: string };
+    system_quantity_cartons: number;
+    actual_quantity_cartons: number;
+    difference_quantity_cartons: number;
+    difference_type: 'BALANCED' | 'SHORT' | 'OVER' | string;
+  }[];
+}
