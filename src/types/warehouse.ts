@@ -44,11 +44,28 @@ export interface GoodsReceipt {
 }
 
 /** `POST /api/goods-receipts` against a supply request (the server takes the warehouse from it). */
+export interface GoodsReceiptLotBody {
+  lot_no: string;
+  best_before?: string;
+  cartons: number;
+}
+
+/** A line names the product by `product_id`, `product_code` (pallet label) or `barcode` (§2.36). */
+export interface GoodsReceiptItemBody {
+  product_id?: number;
+  product_code?: string;
+  barcode?: string;
+  received_cartons: number;
+  lots?: GoodsReceiptLotBody[];
+}
+
+/** Against a supply request, or direct (no request) with `warehouse_id`. */
 export interface CreateGoodsReceiptBody {
-  supply_request_id: number;
+  supply_request_id?: number;
+  warehouse_id?: number;
   received_on: string;
   delivery_note_no?: string;
-  items: { product_id: number; received_cartons: number }[];
+  items: GoodsReceiptItemBody[];
   notes?: string;
 }
 
@@ -93,5 +110,7 @@ export interface CreateColdRoomReadingBody {
   cold_room_id: number;
   reading_hour: number;
   celsius: string;
+  /** Defaults to the server's today; set only to record a missed reading of an earlier day. */
+  business_date?: string;
   notes?: string;
 }

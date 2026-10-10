@@ -6,6 +6,7 @@ export * from './client.js';
 export * from './money.js';
 export * from './permissions.js';
 export * from './transaction.js';
+export * from './fields.js';
 export * from './auth.js';
 
 export * from './types/common.js';
@@ -26,3 +27,4 @@ export * from './types/security.js';
 export * from './types/inventory.js';
 export * from './types/maintenance.js';
 export * from './types/storekeeper.js';
+export * from './types/api/index.js';

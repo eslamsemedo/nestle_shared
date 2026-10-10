@@ -17,6 +17,10 @@ export interface CustomerVisit {
 export interface StartVisitBody {
   daily_session_id: number;
   customer_id: number;
+  /** Omitted when the phone could not get a location (refused or timed out). */
+  latitude?: number;
+  longitude?: number;
+  notes?: string;
 }
 
 export type PaymentType = 'CASH' | 'CREDIT';
@@ -34,6 +38,8 @@ export interface CreateSaleBody {
   salesbuzz_invoice_no: string;
   payment_type: PaymentType;
   items: SaleLineBody[];
+  /** Credit sales only; when absent the backend derives it from the customer's credit period. */
+  due_date?: string;
   notes?: string;
 }
 

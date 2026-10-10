@@ -34,6 +34,13 @@ export interface CreateGateMovementBody {
   /** Sent as typed. */
   fuel_issued_litres?: string;
   notes?: string;
+  /** Optional links; the backend reads the trip from the vehicle when they are absent. */
+  daily_session_id?: number;
+  driver_id?: number;
+  salesman_id?: number;
+  route_id?: number;
+  business_date?: string;
+  occurred_at?: string;
 }
 
 export type Shift = 'MORNING' | 'EVENING';
@@ -55,6 +62,10 @@ export interface CreateAttendanceBody {
   shift?: Shift;
   /** ISO time the officer saved the row; the server stores it only when sent. */
   checked_in_at?: string;
+  /** Same rule for leaving: sent instead of `checked_in_at` when recording a check-out. */
+  checked_out_at?: string;
+  /** Defaults to the server's today. */
+  business_date?: string;
   notes?: string;
 }
 
@@ -82,5 +93,8 @@ export interface FuelVouchersData {
 export interface CreateFuelVoucherBody {
   voucher_no: string;
   vehicle_id: number;
+  driver_id?: number;
+  /** Defaults to today on the server. */
+  issued_on?: string;
   notes?: string;
 }

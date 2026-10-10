@@ -53,6 +53,14 @@ export interface Refrigerator {
 export type VehicleServiceType = 'SERVICE' | 'REPAIR' | 'OIL_CHANGE' | 'TYRES' | 'INSPECTION' | 'OTHER';
 export type FridgeServiceType = 'SERVICE' | 'REPAIR' | 'GAS_REFILL' | 'CLEANING' | 'INSPECTION' | 'OTHER';
 
+/** One spare part on a service. Quantities and costs are sent as typed (strings); the backend validates and totals. */
+export interface ServicePartBody {
+  part_name: string;
+  quantity?: string;
+  unit_cost?: string;
+  notes?: string;
+}
+
 export interface CreateVehicleServiceBody {
   vehicle_id: number;
   type: VehicleServiceType;
@@ -61,6 +69,10 @@ export interface CreateVehicleServiceBody {
   document_no?: string;
   description?: string;
   notes?: string;
+  expense_id?: number;
+  next_service_due_on?: string;
+  next_service_due_km?: number;
+  parts?: ServicePartBody[];
 }
 
 export interface CreateFridgeServiceBody {
@@ -71,6 +83,9 @@ export interface CreateFridgeServiceBody {
   description?: string;
   restored_to_service?: boolean;
   notes?: string;
+  expense_id?: number;
+  next_service_due_on?: string;
+  parts?: ServicePartBody[];
 }
 
 /** Create response `data` of both maintenance endpoints. */
