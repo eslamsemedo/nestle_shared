@@ -1,10 +1,13 @@
 import type { Money } from './common.js';
 
-/** One open invoice from `GET /api/customers/{id}/receivables`. */
+/** What a debt came from. Opening balances and fridge doors carry no salesman. */
+export type ReceivableSource = 'SALE' | 'OPENING_BALANCE' | 'FRIDGE_DOOR';
+
+/** One open debt from `GET /api/customers/{id}/receivables`: the rep's invoices plus debts with no rep. */
 export interface Receivable {
   id: number;
   receivable_no: string;
-  source: string;
+  source: ReceivableSource;
   sale_id: number | null;
   original_amount: Money;
   paid_amount: Money;

@@ -27,4 +27,6 @@ export * from './types/security.js';
 export * from './types/inventory.js';
 export * from './types/maintenance.js';
 export * from './types/storekeeper.js';
+export * from './types/fridge-doors.js';
+export * from './types/branch-transfers.js';
 export * from './types/api/index.js';

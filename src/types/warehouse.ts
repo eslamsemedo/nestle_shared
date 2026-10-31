@@ -17,6 +17,18 @@ export interface SupplyRequest {
   sent_at: string | null;
   notes: string | null;
   items: SupplyRequestItem[];
+  /** إذن التوريد files attached to the request, oldest first. */
+  documents: ProcurementDocument[];
+}
+
+/** A delivery note file. `url` is an API path that needs the token: fetch it as a blob. */
+export interface ProcurementDocument {
+  id: number;
+  url: string;
+  mime_type: string | null;
+  original_name: string | null;
+  uploaded_by: string | null;
+  uploaded_at: string | null;
 }
 
 export interface GoodsReceiptItem {
@@ -41,6 +53,8 @@ export interface GoodsReceipt {
   confirmed_at: string | null;
   items: GoodsReceiptItem[];
   has_variance: boolean;
+  /** Delivery notes on the supply request this receipt fills; `[]` without a request. */
+  delivery_notes: ProcurementDocument[];
 }
 
 /** `POST /api/goods-receipts` against a supply request (the server takes the warehouse from it). */

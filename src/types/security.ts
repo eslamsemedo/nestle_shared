@@ -82,6 +82,17 @@ export interface FuelVoucher {
   station: string | null;
   redeemed_on: string | null;
   notes: string | null;
+  /** Photos of the paper voucher, oldest first; `[]` when none. */
+  photos: FuelVoucherPhoto[];
+}
+
+/** One photo on a voucher. `url` is an API path that needs the token: fetch it, never put it in an `<img src>`. */
+export interface FuelVoucherPhoto {
+  id: number;
+  url: string;
+  mime_type: string | null;
+  uploaded_by: string | null;
+  uploaded_at: string | null;
 }
 
 /** `GET /api/fuel-vouchers` `data`. */

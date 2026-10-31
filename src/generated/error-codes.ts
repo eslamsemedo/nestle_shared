@@ -253,4 +253,16 @@ export type ErrorCode =
   | 'HIE_008'
   | 'IMP_001'
   | 'IMP_002'
-  | 'IMP_003';
+  | 'IMP_003'
+  | 'DOR_001'
+  | 'DOR_002'
+  | 'DOR_003'
+  | 'DOR_004'
+  | 'DOR_005'
+  | 'TRF_001'
+  | 'TRF_002'
+  | 'TRF_003'
+  | 'TRF_004'
+  | 'TRF_005'
+  | 'TRF_006'
+  | 'TRF_007';
